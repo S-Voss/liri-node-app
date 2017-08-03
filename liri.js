@@ -30,23 +30,28 @@ var userCommands = process.argv[2];
 var searchQuery = process.argv[3];
 
 //Logic running the various NPM packages running the function related to the command given
-switch (userCommands) {
-    case "my-tweets":
-    myTweets(searchQuery);
-    break;
+function appLogic(userCommands, searchQuery) {  
 
-    case "spotify-this-song":
-    spotifyThisSong(searchQuery);
-    break;
+    switch (userCommands) {
+        case "my-tweets":
+        myTweets(searchQuery);
+        break;
 
-    case "movie-this":
-    movieThis(searchQuery);
-    break;
+        case "spotify-this-song":
+        spotifyThisSong(searchQuery);
+        break;
 
-    case "do-what-it-says":
-    doWhatItSays();
-    break;
+        case "movie-this":
+        movieThis(searchQuery);
+        break;
+
+        case "do-what-it-says":
+        doWhatItSays();
+        break;
+    };
 };
+
+appLogic(userCommands, searchQuery);
 
 //The my-tweets function
 function myTweets() {
@@ -116,6 +121,6 @@ function doWhatItSays() {
 
         userCommands = dataArr[0];
         searchQuery = dataArr[1];
-        console.log(userCommands);
+        appLogic(userCommands, searchQuery);
     });
 };
